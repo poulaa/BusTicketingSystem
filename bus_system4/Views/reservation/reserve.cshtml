@@ -1,0 +1,53 @@
+﻿@model bus_system4.Models.reservation
+
+@{
+    ViewData["Title"] = "reserve";
+}
+
+<h1>Make A Reservation</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="reserve">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label  class="control-label"> Reservation Date</label>
+                <input asp-for="reservation_date" class="form-control" />
+                <span asp-validation-for="reservation_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label"> Departure</label>
+                <select asp-for="departure" class="form-control">
+                    <option value="cairo">Cairo</option>
+                    <option value="tanta">Tanta</option>
+                   
+                </select>
+                <span asp-validation-for="departure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label"> Arrival</label>
+                <select asp-for="arrival" class="form-control">
+                    <option value="sharm">Sharm Elsheikh</option>
+                    <option value="hurghada">Hurghada</option>
+
+                </select>
+                <span asp-validation-for="arrival" class="text-danger"></span>
+            </div>
+          
+          
+            <div class="form-group">
+                <input type="submit" value="Reserve" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="result" class="btn btn-outline-primary">Back To Results</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

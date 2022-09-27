@@ -1,0 +1,47 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+
+<div class="center">
+    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <h1>@ViewData["Title"]</h1>
+
+        <div asp-validation-summary="ModelOnly" style="color:red"></div>
+        <div class="txt_field">
+            <input asp-for="Input.first_name" autocomplete="first_name" aria-required="true" />
+            <label asp-for="Input.first_name"></label>
+            <span asp-validation-for="Input.first_name" style="color:red"></span>
+        </div>
+        <div class="txt_field">
+            <input asp-for="Input.last_name" autocomplete="last_name" aria-required="true" />
+            <label asp-for="Input.last_name"></label>
+            <span asp-validation-for="Input.last_name" style="color:red"></span>
+        </div>
+
+        <div class="txt_field">
+            <input asp-for="Input.Email" autocomplete="username" aria-required="true" />
+            <label asp-for="Input.Email"></label>
+            <span asp-validation-for="Input.Email" style="color:red"></span>
+        </div>
+        <div class="txt_field">
+            <input asp-for="Input.Password" autocomplete="new-password" aria-required="true" />
+            <label asp-for="Input.Password"></label>
+            <span asp-validation-for="Input.Password" style="color:red"></span>
+        </div>
+        <div class="txt_field">
+            <input asp-for="Input.ConfirmPassword" autocomplete="new-password" aria-required="true" />
+            <label asp-for="Input.ConfirmPassword"></label>
+            <span asp-validation-for="Input.ConfirmPassword" style="color:red"></span>
+        </div>
+        <button id="reg-submit" type="submit">Register</button>
+    </form>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

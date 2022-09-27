@@ -1,0 +1,75 @@
+﻿@model IEnumerable<bus_system4.Models.reservation>
+
+@{
+    ViewData["Title"] = "result";
+}
+
+<h1>Your Trips Are</h1>
+
+<p>
+    <a asp-action="reserve" class="btn btn-outline-primary">Make A Reservation</a>
+</p>
+
+<form id="payment-form" method="post" asp-controller="reservation" asp-action="Create">
+   
+<table >
+    
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.reservation_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.arrival)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+           
+            <th> 
+                Actions
+            </th>
+        </tr>
+    
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.reservation_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.departure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.arrival)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            
+
+            <td>
+                       
+
+                    <a asp-action="Edit" class="btn btn-outline-primary" asp-route-id="@item.Id">Edit</a> 
+              
+                    <a asp-action="Delete" class="btn btn-outline-danger" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    <div style="position: relative;  right:-450px; top: 20px;">
+    <script src="https://checkout.stripe.com/checkout.js" 
+            class="stripe-button"
+            data-key="pk_test_51Li8NiK0RUowckCW4fDOoqaoSzT5qy8Bg18gNtTyMf6ikbcgA2pSvBVvM2AIjDBuXZz3gePRfSL2qbeBnBYiy09B00n3WpIEtk"
+             data-name="airline app payment"
+            
+            data-locale="en"
+             data-label="confirm payment-@ViewBag.purchase ">
+    </script>
+
+    </div>
+</form>
